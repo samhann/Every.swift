@@ -6,7 +6,7 @@
 //  Copyright © 2016 Samhan. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import ObjectiveC
 
 var AssociatedObjectHandle: UInt8 = 0

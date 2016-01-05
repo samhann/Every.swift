@@ -39,7 +39,7 @@ class DetailViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.every_clearTimers()
+        self.every_clearAllTimers()
     }
     
     override func viewDidLoad() {
