@@ -33,15 +33,14 @@ class DetailViewController: UIViewController {
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.every_clearAllTimers()
+        TimerManager.clearTimersForOwner(self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
-        
-        every(3.seconds, owner: self) {
+        TimerManager.every(3.seconds, owner: self) {
             print("hello")
             return true
         }

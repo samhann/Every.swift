@@ -7,67 +7,89 @@
 //
 
 import Foundation
-import ObjectiveC
 
-var AssociatedObjectHandle: UInt8 = 0
+public typealias TimerElapsedHandler = () -> Bool
 
-extension NSObject {
-    var every_timers: [TimerManager] {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedObjectHandle) as? [TimerManager] ?? []
-        }
-        set {
-            objc_setAssociatedObject(self, &AssociatedObjectHandle, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
-        }
+public struct TimerHandler{
+    public var isValid: Bool {
+        guard let timer = item?.timer else { return false }
+        return timer.valid
     }
-    
-    func every_clearAllTimers() {
-        self.every_timers.forEach { $0.clearTimer() }
-        self.every_timers = []
-    }
-
-    func every_removeManager(let man : TimerManager) {
-        self.every_timers.removeObject(man)
+    private let item: TimerItem?
+    private init(item: TimerItem) {
+        self.item = item
     }
 }
 
-
-
-class TimerManager: NSObject {
-    var timer: NSTimer?
-    var closure: (() -> Bool)?
-    weak var owner: NSObject?
+internal class TimerItem: NSObject {
+    private weak var timer: NSTimer?
+    private var elapsedHandler: TimerElapsedHandler
+    private weak var owner: AnyObject?
     
-    init(let closure: () -> Bool,  let owner: NSObject?) {
-        self.closure = closure
+    private init(duration: NSTimeInterval, owner: AnyObject, elapsedHandler: TimerElapsedHandler) {
         self.owner = owner
+        self.elapsedHandler = elapsedHandler
         super.init()
-        self.owner?.every_timers.append(self)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: "timerElapsed:", userInfo: nil, repeats: true)
     }
     
-    func startTimerWithDuration(let duration : NSTimeInterval) {
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: "executeClosure", userInfo: nil, repeats: true)
-    }
-    
-    func executeClosure() {
-        guard let closure = self.closure where self.owner != nil && closure() else {
+    internal func timerElapsed(timer: NSTimer) {
+        guard timer == self.timer else { return }
+        if !elapsedHandler() {
             clearTimer()
-            return
+            TimerManager.clearTimer(timer)
         }
     }
     
     private func clearTimer() {
         self.timer?.invalidate()
-        self.timer = nil
-        self.owner?.every_removeManager(self)
-    }
-    
-    deinit {
-        self.clearTimer()
     }
 }
 
-func every(let duration: NSDateComponents , let owner: NSObject, let closure: () -> Bool) {
-    let manager = TimerManager(closure: closure, owner: owner)
-    manager.startTimerWithDuration(duration.durationInSeconds())
+public struct TimerManager {
+    private static var timers = [TimerItem]()
+    
+    public static func every(interval: NSDateComponents, owner: AnyObject, elapsedHandler: TimerElapsedHandler) -> TimerHandler {
+        let handler = TimerItem(duration: interval.durationInSeconds(), owner: owner, elapsedHandler: elapsedHandler)
+        timers.append(handler)
+        return TimerHandler(item: handler)
+    }
+    
+    public static func clearTimer(handler: TimerHandler) {
+        guard let timer = handler.item?.timer where timer.valid else { return }
+        
+        func timerItemPredicate(item: TimerItem) -> Bool {
+            return item.timer == timer
+        }
+        
+        if let index = timers.indexOf(timerItemPredicate) {
+            handler.item?.clearTimer()
+            timers.removeAtIndex(index)
+        }
+    }
+    
+    public static func clearTimersForOwner(owner: AnyObject) {
+        timers.filter({ $0.owner === owner }).forEach({ $0.clearTimer() })
+        timers = timers.filter {
+            $0.owner !== owner
+        }
+    }
+    
+    public static func clearAllTimers() {
+        timers.forEach {
+            $0.clearTimer()
+        }
+        timers.removeAll()
+    }
+    
+    private static func clearTimer(timer: NSTimer) {
+        func timerItemPredicate(item: TimerItem) -> Bool {
+            return item.timer == timer
+        }
+        
+        if let index = timers.indexOf(timerItemPredicate) {
+            timers.removeAtIndex(index)
+        }
+        print("Timer cleared !")
+    }
 }

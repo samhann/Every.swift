@@ -80,14 +80,13 @@ public extension Int {
     
     
     public var years: NSDateComponents {
-            let components = NSDateComponents.zero()
-            components.year = self
-            return components
+        let components = NSDateComponents.zero()
+        components.year = self
+        return components
     }
-    
 }
 
-public func +(let compOne: NSDateComponents , compTwo: NSDateComponents) -> NSDateComponents {
+public func +(compOne: NSDateComponents , compTwo: NSDateComponents) -> NSDateComponents {
     let newComponent = NSDateComponents()
     newComponent.minute = compOne.minute + compTwo.minute
     newComponent.second = compOne.second + compTwo.second
@@ -99,6 +98,6 @@ public func +(let compOne: NSDateComponents , compTwo: NSDateComponents) -> NSDa
 }
 
 
-public func -(let frmDate: NSDate , let toDate: NSDate) -> NSDateComponents{
+public func -(frmDate: NSDate , toDate: NSDate) -> NSDateComponents{
     return NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: toDate, toDate: frmDate, options: NSCalendarOptions(rawValue:0))
 }
