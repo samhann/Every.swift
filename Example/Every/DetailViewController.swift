@@ -9,16 +9,11 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
-    deinit
-    {
+    deinit {
         print("deinit!")
-        
     }
-    
-
 
     var detailItem: AnyObject? {
         didSet {
@@ -36,29 +31,24 @@ class DetailViewController: UIViewController {
         }
     }
 
-    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.every_clearAllTimers()
+        TimerManager.clearTimersForOwner(self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
-        
-        every(1.minutes + 3.seconds, owner: self) {
+        TimerManager.every(3.seconds, owner: self) {
             print("hello")
             return true
         }
-
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
