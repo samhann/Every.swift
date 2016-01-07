@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F191A0A1C3D91F600BF87C7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F191A091C3D91F600BF87C7 /* ArrayExtension.swift */; };
 		BB8411CE1C3BC96600C8B12A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8411CD1C3BC96600C8B12A /* AppDelegate.swift */; };
 		BB8411D01C3BC96600C8B12A /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8411CF1C3BC96600C8B12A /* MasterViewController.swift */; };
 		BB8411D21C3BC96600C8B12A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8411D11C3BC96600C8B12A /* DetailViewController.swift */; };
@@ -16,8 +15,9 @@
 		BB8411DA1C3BC96600C8B12A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB8411D81C3BC96600C8B12A /* LaunchScreen.storyboard */; };
 		BB8411E51C3BC96600C8B12A /* EveryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8411E41C3BC96600C8B12A /* EveryTests.swift */; };
 		BB8411F01C3BC96600C8B12A /* EveryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8411EF1C3BC96600C8B12A /* EveryUITests.swift */; };
-		BB8412031C3BDD3200C8B12A /* Every.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8412011C3BDD3200C8B12A /* Every.swift */; };
-		BB8412041C3BDD3200C8B12A /* NSDateComponentsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8412021C3BDD3200C8B12A /* NSDateComponentsExtensions.swift */; };
+		BB879B941C3E621E0047CC42 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB879B911C3E621E0047CC42 /* ArrayExtension.swift */; };
+		BB879B951C3E621E0047CC42 /* Every.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB879B921C3E621E0047CC42 /* Every.swift */; };
+		BB879B961C3E621E0047CC42 /* NSDateComponentsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB879B931C3E621E0047CC42 /* NSDateComponentsExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3F191A091C3D91F600BF87C7 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		BB8411CA1C3BC96600C8B12A /* Every.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Every.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB8411CD1C3BC96600C8B12A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB8411CF1C3BC96600C8B12A /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -53,8 +52,9 @@
 		BB8411EB1C3BC96600C8B12A /* EveryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EveryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB8411EF1C3BC96600C8B12A /* EveryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EveryUITests.swift; sourceTree = "<group>"; };
 		BB8411F11C3BC96600C8B12A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BB8412011C3BDD3200C8B12A /* Every.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Every.swift; sourceTree = "<group>"; };
-		BB8412021C3BDD3200C8B12A /* NSDateComponentsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateComponentsExtensions.swift; sourceTree = "<group>"; };
+		BB879B911C3E621E0047CC42 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = ../src/ArrayExtension.swift; sourceTree = "<group>"; };
+		BB879B921C3E621E0047CC42 /* Every.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Every.swift; path = ../src/Every.swift; sourceTree = "<group>"; };
+		BB879B931C3E621E0047CC42 /* NSDateComponentsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateComponentsExtensions.swift; path = ../src/NSDateComponentsExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,9 +105,7 @@
 		BB8411CC1C3BC96600C8B12A /* Every */ = {
 			isa = PBXGroup;
 			children = (
-				BB8412011C3BDD3200C8B12A /* Every.swift */,
-				3F191A091C3D91F600BF87C7 /* ArrayExtension.swift */,
-				BB8412021C3BDD3200C8B12A /* NSDateComponentsExtensions.swift */,
+				BB879B901C3E61CD0047CC42 /* lib */,
 				BB8411CD1C3BC96600C8B12A /* AppDelegate.swift */,
 				BB8411CF1C3BC96600C8B12A /* MasterViewController.swift */,
 				BB8411D11C3BC96600C8B12A /* DetailViewController.swift */,
@@ -135,6 +133,17 @@
 				BB8411F11C3BC96600C8B12A /* Info.plist */,
 			);
 			path = EveryUITests;
+			sourceTree = "<group>";
+		};
+		BB879B901C3E61CD0047CC42 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				BB879B911C3E621E0047CC42 /* ArrayExtension.swift */,
+				BB879B921C3E621E0047CC42 /* Every.swift */,
+				BB879B931C3E621E0047CC42 /* NSDateComponentsExtensions.swift */,
+			);
+			name = lib;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,12 +276,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB879B961C3E621E0047CC42 /* NSDateComponentsExtensions.swift in Sources */,
 				BB8411D21C3BC96600C8B12A /* DetailViewController.swift in Sources */,
-				BB8412041C3BDD3200C8B12A /* NSDateComponentsExtensions.swift in Sources */,
-				BB8412031C3BDD3200C8B12A /* Every.swift in Sources */,
-				3F191A0A1C3D91F600BF87C7 /* ArrayExtension.swift in Sources */,
 				BB8411D01C3BC96600C8B12A /* MasterViewController.swift in Sources */,
 				BB8411CE1C3BC96600C8B12A /* AppDelegate.swift in Sources */,
+				BB879B941C3E621E0047CC42 /* ArrayExtension.swift in Sources */,
+				BB879B951C3E621E0047CC42 /* Every.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
