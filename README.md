@@ -20,5 +20,6 @@ Alternatively , you can use the following static method to invalidate all timers
 TODO :
 
 Automatically invalidate timer whenever owner is deallocated.
+Support milliseconds.
 
 
