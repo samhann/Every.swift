@@ -22,6 +22,7 @@ The timer will automatically be invalidated if the owner is a subclass of NSObje
 ## TODO :
 
 Investigate automatic invalidation of timer if owner is Swift object.
+
 Support milliseconds.
 
 
