@@ -7,6 +7,28 @@
 //
 
 import Foundation
+import ObjectiveC
+
+var AssociatedObjectHandle: UInt8 = 0
+
+internal class DeallocWatcher : NSObject {
+    
+    weak var owner : NSObject?
+    
+    init( owner : NSObject?) {
+        self.owner = owner
+        super.init()
+        objc_setAssociatedObject(self.owner, &AssociatedObjectHandle, self, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+    }
+    
+    deinit {
+        
+        print("Auto deregistration successful !")
+        guard let timerOwner = self.owner else { return }
+        TimerManager.clearTimersForOwner(timerOwner)
+    }
+}
+
 
 public typealias TimerElapsedHandler = () -> Bool
 
@@ -52,6 +74,10 @@ public struct TimerManager {
     public static func every(interval: NSDateComponents, owner: AnyObject, elapsedHandler: TimerElapsedHandler) -> TimerHandler {
         let handler = TimerItem(duration: interval.durationInSeconds(), owner: owner, elapsedHandler: elapsedHandler)
         timers.append(handler)
+        if let nsObject = owner as? NSObject {
+                DeallocWatcher(owner: nsObject)
+        }
+
         return TimerHandler(item: handler)
     }
     
