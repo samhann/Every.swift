@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FAD340B1C3FAB1800CA39FD /* TimerManageableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAD340A1C3FAB1800CA39FD /* TimerManageableProtocol.swift */; };
 		BB8411CE1C3BC96600C8B12A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8411CD1C3BC96600C8B12A /* AppDelegate.swift */; };
 		BB8411D01C3BC96600C8B12A /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8411CF1C3BC96600C8B12A /* MasterViewController.swift */; };
 		BB8411D21C3BC96600C8B12A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8411D11C3BC96600C8B12A /* DetailViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3FAD340A1C3FAB1800CA39FD /* TimerManageableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimerManageableProtocol.swift; path = ../src/TimerManageableProtocol.swift; sourceTree = "<group>"; };
 		BB8411CA1C3BC96600C8B12A /* Every.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Every.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB8411CD1C3BC96600C8B12A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB8411CF1C3BC96600C8B12A /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				BB879B911C3E621E0047CC42 /* ArrayExtension.swift */,
 				BB879B921C3E621E0047CC42 /* Every.swift */,
 				BB879B931C3E621E0047CC42 /* NSDateComponentsExtensions.swift */,
+				3FAD340A1C3FAB1800CA39FD /* TimerManageableProtocol.swift */,
 			);
 			name = lib;
 			path = ..;
@@ -279,6 +282,7 @@
 				BB879B961C3E621E0047CC42 /* NSDateComponentsExtensions.swift in Sources */,
 				BB8411D21C3BC96600C8B12A /* DetailViewController.swift in Sources */,
 				BB8411D01C3BC96600C8B12A /* MasterViewController.swift in Sources */,
+				3FAD340B1C3FAB1800CA39FD /* TimerManageableProtocol.swift in Sources */,
 				BB8411CE1C3BC96600C8B12A /* AppDelegate.swift in Sources */,
 				BB879B941C3E621E0047CC42 /* ArrayExtension.swift in Sources */,
 				BB879B951C3E621E0047CC42 /* Every.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, TimerManageable {
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
     deinit {
@@ -33,14 +33,14 @@ class DetailViewController: UIViewController {
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        TimerManager.clearTimersForOwner(self)
+        clearTimers()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
-        TimerManager.every(3.seconds, owner: self) {
+        every(3.seconds) {
             print("hello")
             return true
         }
