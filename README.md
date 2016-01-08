@@ -2,27 +2,29 @@
 ## Every.Swift -  A Convenient NSTimer Wrapper
 
 ## Usage
+Provided that your class implement `TimerManageable` protocol you just do:
 
-```
-TimerManager.every(3.seconds, owner: self) {
+```swift
+self.every(3.seconds) {
     print("hello")
     return true
 }
 ```
 
-Prints "hello" every 1 minute and 3 seconds. 
+Prints "hello" every 3 seconds. 
 
 Return `true` from the closure to continue , `false` to invalidate the timer.
 
-Alternatively , you can use the following static method to invalidate all timers:
-`TimerManager.clearTimersForOwner(self)`
+Alternatively , you can use the following method to invalidate all timers of the receiver:
+`self.clearTimers()`
 
-The timer will automatically be invalidated if the owner is a subclass of NSObject.
+Normally you're are responsible of invalidating the timers you created. If the timer is not invalidated before the object it's been tied to it will be invalidated next time the timer is elapsed and before calling the `ElapsedHandler`.
 
 ## TODO :
-
-Investigate automatic invalidation of timer if owner is Swift object.
-
-Support milliseconds.
-
-
+- [x] Investigate automatic invalidation of timer if owner is Swift object.
+- [ ] Support milliseconds.
+- [ ] Embed in a framework.
+- [ ] More representative example application.
+- [ ] OS X support.
+- [ ] Carthage support.
+- [ ] CocoaPod support.  
