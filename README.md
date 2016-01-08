@@ -22,6 +22,8 @@ Normally you're are responsible of invalidating the timers you created. If the t
 
 ## TODO :
 - [x] Investigate automatic invalidation of timer if owner is Swift object.
+- [x] Add a project and test target.
+- [ ] Improve unit test coverage.
 - [ ] Support milliseconds.
 - [ ] Embed in a framework.
 - [ ] More representative example application.
