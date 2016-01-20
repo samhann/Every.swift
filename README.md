@@ -29,4 +29,4 @@ Normally you're are responsible of invalidating the timers you created. If the t
 - [ ] More representative example application.
 - [ ] OS X support.
 - [ ] Carthage support.
-- [ ] CocoaPod support.  
+- [x] CocoaPod support.  
