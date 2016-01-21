@@ -17,10 +17,8 @@ private struct DateConstants {
     static let secPerNanosecond     = 1e-9
 }
 
-public extension NSDateComponents
-{
-    static public func zero()->NSDateComponents
-    {
+public extension NSDateComponents {
+    static public func zero()-> NSDateComponents {
         let new         = NSDateComponents()
         new.hour        = 0
         new.minute      = 0
@@ -32,35 +30,32 @@ public extension NSDateComponents
         return new
     }
     
-    func durationInSeconds() -> NSTimeInterval
-    {
+    func durationInSeconds() -> NSTimeInterval {
         let nanosecond = Double(self.nanosecond) * DateConstants.secPerNanosecond
         let secAndMin = self.second + self.minute * DateConstants.secPerMinute
         let hourAndDay = self.hour * DateConstants.secPerHour + self.day * DateConstants.secPerDay
         let monthAndYear = self.month * DateConstants.secPerMonth + self.year * DateConstants.secPerYear
         return NSTimeInterval(Double(secAndMin) + Double(hourAndDay) + Double(monthAndYear) + nanosecond)
     }
-    
 }
-
 
 public extension Int {
     public var hours: NSDateComponents {
-            let components = NSDateComponents.zero()
-            components.hour = self
-            return components
+        let components = NSDateComponents.zero()
+        components.hour = self
+        return components
     }
     
     public var minutes: NSDateComponents {
-            let components = NSDateComponents.zero()
-            components.minute = self
-            return components
+        let components = NSDateComponents.zero()
+        components.minute = self
+        return components
     }
     
     public var seconds: NSDateComponents {
-            let components = NSDateComponents.zero()
-            components.second = self
-            return components
+        let components = NSDateComponents.zero()
+        components.second = self
+        return components
     }
     
     public var nanoseconds: NSDateComponents {
@@ -69,7 +64,6 @@ public extension Int {
         return components
     }
     
-    
     public var milliseconds: NSDateComponents {
         let components = NSDateComponents.zero()
         components.nanosecond = self * 1000000
@@ -77,23 +71,22 @@ public extension Int {
     }
     
     public var days: NSDateComponents {
-            let components = NSDateComponents.zero()
-            components.day = self
-            return components
+        let components = NSDateComponents.zero()
+        components.day = self
+        return components
     }
     
     public var months : NSDateComponents {
-            let components = NSDateComponents.zero()
-            components.month = self
-            return components
+        let components = NSDateComponents.zero()
+        components.month = self
+        return components
     }
     
     public var weeks: NSDateComponents {
-            let components = NSDateComponents.zero()
-            components.day = self*7
-            return components
+        let components = NSDateComponents.zero()
+        components.day = self*7
+        return components
     }
-    
     
     public var years: NSDateComponents {
         let components = NSDateComponents.zero()
@@ -114,7 +107,6 @@ public func +(compOne: NSDateComponents , compTwo: NSDateComponents) -> NSDateCo
     return newComponent
 }
 
-
-public func -(frmDate: NSDate , toDate: NSDate) -> NSDateComponents{
+public func -(frmDate: NSDate , toDate: NSDate) -> NSDateComponents {
     return NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Hour, .Minute, .Second,.Nanosecond], fromDate: toDate, toDate: frmDate, options: NSCalendarOptions(rawValue:0))
 }
