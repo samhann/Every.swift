@@ -84,7 +84,7 @@ public extension Int {
     
     public var weeks: NSDateComponents {
         let components = NSDateComponents.zero()
-        components.day = self*7
+        components.day = self * 7
         return components
     }
     
