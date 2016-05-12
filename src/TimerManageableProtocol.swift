@@ -19,15 +19,15 @@ extension TimerManageable {
         return TimerManager.every(interval, owner: self, elapsedHandler: elapsedHandler)
     }
     
-    func clearTimer(handler: TimerHandler) {
+    public func clearTimer(handler: TimerHandler) {
         TimerManager.clearTimer(handler)
     }
     
-    func clearTimers() {
+    public func clearTimers() {
         TimerManager.clearTimersForOwner(self)
     }
     
-    func clearAllTimers() {
+    public func clearAllTimers() {
         TimerManager.clearAllTimers()
     }
 }
