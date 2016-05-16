@@ -10,7 +10,7 @@ import Foundation
 
 public typealias TimerElapsedHandler = () -> Bool
 
-public struct TimerHandler{
+public struct TimerHandler {
     public var isValid: Bool {
         guard let timer = item?.timer else { return false }
         return timer.valid
@@ -36,7 +36,7 @@ internal class TimerItem: NSObject {
     internal func timerElapsed(timer: NSTimer) {
         guard timer == self.timer else { return }
         // Each time a timer is elapsed we check if the owner has been deallocated.
-        // If it has been we deallocate the timer to.
+        // If it has been, we deallocate the timer too.
         if owner == nil || !elapsedHandler() {
             clearTimer()
             TimerManager.clearTimer(timer)
